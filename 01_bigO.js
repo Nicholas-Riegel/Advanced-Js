@@ -84,13 +84,15 @@ function logAtLeast10(n) {
 
 // SPACE COMPLEXITY
 /*
-We are going to be concerned with what is sometimes called auxiliary space complexity
-This is the space required for the algorithm to run, not the space taken up by the inputs
+We are concerned with what is sometimes called auxiliary space complexity
+This is the space required for the algorithm to run
+Not the space taken up by the inputs
 We are concerned with what happens inside the algorithm
+
 Rules of thub
 1. Most primitives (booleans, number, undefined, null) are constant space
 2. Strings require O(n) space (where n is the string length)
-3. Reference types are general O(n), where n is the length (for arrays) or number of keys (for objects)  
+3. Reference types are O(n), where n is the length (for arrays) or number of keys (for objects)  
 
 for sum(arr){
     let total =0;
@@ -110,4 +112,88 @@ function double(arr){
     return newArr
 }
 => O(n)
+
+Quiz
+1. 
+function logUpTo(n) {
+    for (var i = 1; i <= n; i++) {
+        console.log(i);
+    }
+}
+=> O(1)
+
+2.
+function logAtMost10(n) {
+    for (var i = 1; i <= Math.min(n, 10); i++) {
+        console.log(i);
+    }
+}
+=> O(1)
+
+3.
+function logAtMost10(n) {
+    for (var i = 1; i <= Math.min(n, 10); i++) {
+        console.log(i);
+    }
+}
+
+=>O(1)
+
+4.
+function onlyElementsAtEvenIndex(array) {
+    var newArray = Array(Math.ceil(array.length / 2));
+    for (var i = 0; i < array.length; i++) {
+        if (i % 2 === 0) {
+            newArray[i / 2] = array[i];
+        }
+    }
+    return newArray;
+}
+=> O(n)
+
+5.
+function subtotals(array) {
+    var subtotalArray = Array(array.length);
+    for (var i = 0; i < array.length; i++) {
+        var subtotal = 0;
+        for (var j = 0; j <= i; j++) {
+            subtotal += array[j];
+        }
+        subtotalArray[i] = subtotal;
+    }
+    return subtotalArray;
+}
+=>O(n)
+*/
+
+// LOGARITHMS
+// log2(8) = 3
+// log2 (value) = exponent
+// for our purposes log === log2
+/*
+Rule of thumb:
+The binary logarithm of a number is how many times you can divide it by 2 until (inclusive) you get a number less than or equal to 1.
+log2(8) = 3
+
+8/2 = 4
+4/2 = 2
+2/2 = 1 
+
+{{
+    When the number is a power of 2:
+    For example, 8 is a power of 2 (2³), so dividing it by 2 repeatedly will eventually get you exactly to 1. In this case, the binary logarithm gives you the exact number of divisions, which matches the exponent in the power of 2.
+    
+    When the number is not a power of 2:
+    For numbers that are not powers of 2 (e.g., 10), dividing by 2 repeatedly will result in a number less than 1 before you exactly reach 1. Here's an example:
+    
+    10 ÷ 2 = 5
+    5 ÷ 2 = 2.5
+    2.5 ÷ 2 = 1.25
+    1.25 ÷ 2 = 0.625 (now less than 1)
+    The binary logarithm of 10 is approximately 3.32, meaning it takes about 3.32 divisions to reduce 10 to 1 (log₂(10) ≈ 3.32).
+}}
+
+O(log n) is only slighly worse than O(1)
+and much better than O(n)
+
 */
