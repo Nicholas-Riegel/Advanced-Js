@@ -3,24 +3,24 @@ Big O of Objects
 
 Insertion -   O(1)
 Removal -   O(1)
-Searching -   O(N) checking to see if some information is in a value
+Searching -   O(n) checking to see if some information is in a value
 Access -   O(1)
 
 When you don't need any ordering, objects are an excellent choice!
 Constant time is the fastest
 Linear time is O(n)
 
-Object.keys -   O(N)
-Object.values -   O(N)
-Object.entries -   O(N)
+Object.keys -   O(n)
+Object.values -   O(n)
+Object.entries -   O(n)
 hasOwnProperty -   O(1)
  */
 
-// let instructor = {
-//     firstName: "Kelly",
-//     isInstructor: true,
-//     favoriteNumbers: [1,2,3,4]
-// }
+let instructor = {
+    firstName: "Kelly",
+    isInstructor: true,
+    favoriteNumbers: [1,2,3,4]
+}
 // console.log(Object.keys(instructor))
 // console.log(Object.values(instructor))
 // console.log(Object.entries(instructor))
@@ -42,17 +42,17 @@ Insertion -   It depends....
     .unshift() is O(n)
     .shift() is O(n)
 Removal -   It depends....
-Searching -   O(N)
+Searching -   O(n)
 Access -   O(1)
 
 
 push -   O(1)
 pop -   O(1)
-shift -   O(N)
-unshift -   O(N)
-concat -   O(N)
-slice -   O(N)
-splice -   O(N)
-sort -   O(N * log N)
-forEach/map/filter/reduce/etc. -   O(N)
+shift -   O(n)
+unshift -   O(n)
+concat -   O(n)
+slice -   O(n)
+splice -   O(n)
+sort -   O(nlog(n))
+forEach/map/filter/reduce/etc. -   O(n)
 */
