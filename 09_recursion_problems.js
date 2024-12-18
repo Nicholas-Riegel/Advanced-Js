@@ -12,7 +12,7 @@ function power(base, exp){
         2 * power(2, 1):2 = 4
             2 * power(2, 0):1 = 2
                 1
- */
+*/
 
 // console.log(power(2,0)) // 1
 // console.log(power(2,2)) // 4
