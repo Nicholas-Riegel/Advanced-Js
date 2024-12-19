@@ -116,21 +116,57 @@ function linearSearch(arr, val){
 // If you complete the inner loop and find a match, increment the count of matches
 // Return the count
 
+// my first solution
+// function stringSearch(str, substr){
+    
+//     let count = 0;
+    
+//     for (let i = 0; i < str.length; i++){
+    
+//         const window = str.slice(i, i + substr.length)
+    
+//         if (substr === window) count++;
+//     }
+    
+//     return count;
+// }
+
+// my second solution (because I think he wants us to use nested loops)
+// function stringSearch(str, substr){
+//     let count = 0;
+//     let subcount = 0;
+//     for (let i = 0; i < str.length; i++){
+
+//         for (let j = 0; j < substr.length; j++){
+        
+//             if (substr[j] === str[i + j]) subcount++;
+//         }
+        
+//         if (subcount === substr.length) count++;
+        
+//         subcount = 0;
+//     }
+//     return count;
+// }
+
+// my third solution, using break, as the teacher seems to want to do
 function stringSearch(str, substr){
+
     let count = 0;
+
     for (let i = 0; i < str.length; i++){
-        const window = str.slice(i, i + substr.length)
-        if (substr === window) count++;
+
+        for (let j = 0; j < substr.length; j++){
+        
+            if (substr[j] !== str[i + j]) break;
+
+            if (j === substr.length - 1) count++;
+        }
     }
     return count;
 }
 
-console.log(stringSearch("hello", "lo")); // 1
-console.log(stringSearch("wowomgwo omgwowowomg", "omg")); // 3
+// the above is basically the teacher's solution
 
-
-
-// let str = "hello"
-// let substr = "he"
-// let window = str.slice(0, substr.length)
-// console.log(window === substr);
+console.log(stringSearch("helolo", "lo")); // 2
+console.log(stringSearch("lelomgklswo omgkalal ajala;dlkomg oslemnomg", "omg")); // 4
