@@ -163,10 +163,10 @@ function stringSearch(str, substr){
             if (j === substr.length - 1) count++;
         }
     }
+    
     return count;
 }
 
-// the above is basically the teacher's solution
-
 console.log(stringSearch("helolo", "lo")); // 2
 console.log(stringSearch("lelomgklswo omgkalal ajala;dlkomg oslemnomg", "omg")); // 4
+console.log(stringSearch(";alksdflkajsdf;lkjasdf;flkjsdf", "sdf")); // 4
