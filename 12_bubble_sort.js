@@ -8,33 +8,28 @@
 // console.log([6, 4, 15, 10].sort((a, b) => a - b)); // [4, 6, 10, 15,] 
 
 // BUBBLE SORT 
-// not very efficient Ot(nlogn)
-// if left is bigger than right, noSwap
-// this eventually sorts smallest to largest
+// if left is bigger than right, swap
 
 function bubbleSort(arr){
 
+    // start at end (bc inner loop moves largest to end)
     for (let i = arr.length - 1; i > -1; i--){
-
-        let noSwap = true; // this will stop the loop if the rest is already sorted. 
-        // normally the time complexity is Ot(n^2), but with this optimization, if the array is nearly sorted, it is closer to Ot(n)
-
+        
+        // start at beginning and go to i
         for (let j = 0; j < i; j++){    
             
+            // if a greater than b, swap a and b
             if (arr[j] > arr[j + 1]){
                 
-                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-
-                noSwap = false;
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];                
             }
         }
-        
-        console.log(arr);
-        
-        if (noSwap) break;
     }
-
+    
     return arr;
 }
-bubbleSort([1, 2, 3, 4, 5, 10, 13, 6, 54, 34, 29, 76, 45, 53])
-// console.log(bubbleSort([1, 2, 3, 4, 5, 10, 13, 6, 54, 34, 29, 76, 45, 53]));
+// not very efficient: Ot(n^2)
+
+console.log(
+    bubbleSort([10, 6, 13, 76, 54, 5, 45, 3, 34, 29, 4,  1,  53, 2])
+);
