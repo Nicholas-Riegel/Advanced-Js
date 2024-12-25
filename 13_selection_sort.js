@@ -55,9 +55,6 @@ function selectionSort(arr){
 }
 // Ot(n^2)
 
-console.log(
-    selectionSort([29, 4,  1,  53, 2])
-);
-console.log(
-    selectionSort([1, 29, 4,  1,  53, 2])
-);
+console.log(selectionSort([29, 4,  1,  53, 2]));
+
+console.log(selectionSort([1, 29, 4,  1,  53, 2]));

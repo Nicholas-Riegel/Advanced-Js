@@ -30,6 +30,4 @@ function bubbleSort(arr){
 }
 // not very efficient: Ot(n^2)
 
-console.log(
-    bubbleSort([10, 6, 13, 76, 54, 5, 45, 3, 34, 29, 4,  1,  53, 2])
-);
+console.log(bubbleSort([10, 6, 13, 76, 54, 5, 45, 3, 34, 29, 4,  1,  53, 2]));
