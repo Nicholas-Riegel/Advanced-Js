@@ -104,3 +104,6 @@
 console.log(insertionSort([3, 2, 5, 4, 5, 3, 12, 5, 1, 10]))
 console.log(insertionSort([3, 2]))
 
+// bubble and insertion sort are both Ot(n^2), but if data is nearly sorted, they can be Ot(n)
+// selection sort is always Ot(n^2)
+// they all have a space complexity of Os(1)
