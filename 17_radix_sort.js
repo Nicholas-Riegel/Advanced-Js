@@ -68,49 +68,60 @@ function mostDigits(arr){
 // Replace our existing array with values in our buckets, starting with 0 and going up to 9
 // return list at the end!
 // my version
-// function radixSort(arr){
-    
-//     let cycles = mostDigits(arr)
-    
-//     for (let i = 0; i < cycles; i++){
-
-//         let buckets = [
-//             [],[],[],[],[],
-//             [],[],[],[],[]
-//         ]
-        
-//         for (let j = 0; j < arr.length; j++){
-
-//             let indexOfBucket = getDigit(arr[j], i);
-            
-//             buckets[indexOfBucket].push(arr[j])
-//         }
-
-//         arr = [].concat(...buckets);
-//     }
-    
-//     return arr;
-// }
-
-// teacher's version
 function radixSort(arr){
-
-    let maxDigitCout = mostDigits(arr)
-
-    for (let i = 0; i < maxDigitCout; i++){
     
-        let digitBuckets = Array.from({length: 10}, () => []);
-
-        for (let j = 0; j < arr.length; j++){
-
-            digitBuckets[getDigit(arr[j], i)].push(arr[j])
+    function getDigit(num, ir){
+        return Math.floor(Math.abs(num)/Math.pow(10, ir)) % 10;
+    }
+    
+    function mostDigits(arr){
+        function digitCount(num){
+            if (num === 0) return 1;
+            return Math.floor(Math.log10(Math.abs(num))) + 1;
         }
+        if (arr.length === 0) return undefined;
+        let largest = digitCount(arr[0])
+        for (let i = 1; i < arr.length; i++){
+            if (digitCount(arr[i]) > largest) largest = digitCount(arr[i])
+        }
+        return largest;
+    }   
 
-        arr = [].concat(...digitBuckets)
+    let cycles = mostDigits(arr)
+
+    for (let i = 0; i < cycles; i++){
+        const buckets = Array.from({length:10}, ()=>[])
+        for (let j = 0; j < arr.length; j++){
+            let indexOfBucket = getDigit(arr[j], i);
+            buckets[indexOfBucket].push(arr[j])
+        }
+        arr = [].concat(...buckets);
     }
     return arr;
 }
 console.log(radixSort([23, 456, 54, 8765, 3, 23, 11, 1]));
+
+
+
+
+// teacher's version
+// function radixSort(arr){
+
+//     let maxDigitCout = mostDigits(arr)
+
+//     for (let i = 0; i < maxDigitCout; i++){
+    
+//         let digitBuckets = Array.from({length: 10}, () => []);
+
+//         for (let j = 0; j < arr.length; j++){
+
+//             digitBuckets[getDigit(arr[j], i)].push(arr[j])
+//         }
+
+//         arr = [].concat(...digitBuckets)
+//     }
+//     return arr;
+// }
 // time complexity O(nk)
 // n: length of array
 // k: average number of digits
