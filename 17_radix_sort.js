@@ -92,8 +92,7 @@ function radixSort(arr){
     for (let i = 0; i < cycles; i++){
         const buckets = Array.from({length:10}, ()=>[])
         for (let j = 0; j < arr.length; j++){
-            let indexOfBucket = getDigit(arr[j], i);
-            buckets[indexOfBucket].push(arr[j])
+            buckets[getDigit(arr[j], i)].push(arr[j])
         }
         arr = [].concat(...buckets);
     }
