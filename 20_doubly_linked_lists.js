@@ -98,9 +98,11 @@ class DoublyLinkedList{
     insert(index, val){
         if (index === this.length) return this.push(val);
         if (index === 0) return this.unshift(val);
+        
         let newNode = new Node(val);
         let after = this.get(index);
         let before = this.get(index-1);
+        
         if (after && before){
             before.next = newNode;
             newNode.prev = before;
@@ -115,9 +117,11 @@ class DoublyLinkedList{
     remove(index){
         if (index === 0) return this.shift();
         if (index === this.length-1) return this.pop();
+        
         let removedNode = this.get(index);
         let before = this.get(index-1);
         let after = this.get(index+1);
+        
         if (before && after){
             before.next = after;
             after.prev = before;
