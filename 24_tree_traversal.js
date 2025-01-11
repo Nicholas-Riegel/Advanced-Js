@@ -1,26 +1,16 @@
-// A tree is a datastructure with parent and child nodes only
-// And the direction is always down
-// no sibling connections (that's a graph)
-// and has to have one root only
-// siblings are nodes that have the same parent
-// Leaf - a node with no children
-// Edge - the arrow from one node to another
+// this is about any tree
+// not just ordered trees like BSTs
+// two main approaches: Breadth first and Depth first search
 
-// the Dom is an example of a tree structure
-
-// Binary trees: each node can have at most two children
-
-// Binary search trees: every number that is less than the parent node is to the left
-// every number that is greater than the parent node is to the right
-
-// doing it manually
-// let bst = new BinarySearchTree();
-// bst.root = new Node(15);
-// bst.root.left = new Node(10)
-// bst.root.right = new Node(20)
-// bst.root.left.right = new Node(11)
-// console.log(bst);
-
+// Breadth first search
+// go horizontally across every level fo the treee
+// Create a queue (this can be an array) and a variable to store the values of nodes visited
+// Place the root node in the queue
+// Loop as long as there is anything in the queue
+// Dequeue a node from the queue and push the value of the node into the variable that stores the nodes
+// If there is a left property on the node dequeued - add it to the queue
+// If there is a right property on the node dequeued - add it to the queue
+// Return the variable that stores the values
 class Node {
     constructor(val){
         this.val = val;
@@ -84,22 +74,28 @@ class BinarySearchTree {
             }
         }
     }
+
+    breadthFirstSearch(){
+        let node = this.root;
+        let queue = [node];
+        let visited = [];
+        while (queue.length > 0){
+            node = queue.shift();
+            if (node.left) queue.push(node.left);
+            if (node.right) queue.push(node.right);
+            visited.push(node.val)
+        }
+        return visited;
+    }
 }
 
 let bst = new BinarySearchTree;
-bst.insert(15)
 bst.insert(10)
-bst.insert(10)
-bst.insert(11)
-bst.insert(9)
+// left
+bst.insert(5)
+bst.insert(3)
+bst.insert(7)
+// right
 bst.insert(20)
 bst.insert(25)
-bst.insert(19)
-console.log(bst);
-
-// Big O of BST
-// best and average case
-// Insertion - O(log n)
-// Searching - O(log n)
-
-// NOT guaranteed!
+console.log(bst.breadthFirstSearch());
