@@ -4,7 +4,7 @@
 
 // Breadth first search
 // go horizontally across every level fo the treee
-// Create a queue (this can be an array) and a variable to store the values of nodes visited
+// Create a queue (this can be an array) and a variable to store the values of nodes data
 // Place the root node in the queue
 // Loop as long as there is anything in the queue
 // Dequeue a node from the queue and push the value of the node into the variable that stores the nodes
@@ -78,14 +78,25 @@ class BinarySearchTree {
     breadthFirstSearch(){
         let node = this.root;
         let queue = [node];
-        let visited = [];
-        while (queue.length > 0){
+        let data = [];
+        while (queue.length){
             node = queue.shift();
-            if (node.left) queue.push(node.left);
-            if (node.right) queue.push(node.right);
-            visited.push(node.val)
+            node.left && queue.push(node.left);
+            node.right && queue.push(node.right);
+            data.push(node.val);
         }
-        return visited;
+        return data;
+    }
+    // Pre order Depth First Search
+    preOrderDFS(){
+        let data = [];
+        function traverse(node){
+            data.push(node.val);
+            node.left && traverse(node.left);
+            node.right && traverse(node.right);
+        }
+        traverse(this.root)
+        return data;
     }
 }
 
@@ -98,4 +109,8 @@ bst.insert(7)
 // right
 bst.insert(20)
 bst.insert(25)
-console.log(bst.breadthFirstSearch());
+bst.insert(15)
+// BFS expected: [10, 5, 20, 3, 7, 15, 25]
+// console.log(bst.breadthFirstSearch());
+// preOrderDFS expected: [10, 5, 3, 7, 20, 15, 25]
+console.log(bst.preOrderDFS());
