@@ -3,7 +3,7 @@
 // two main approaches: Breadth first and Depth first search
 
 // Breadth first search
-// go horizontally across every level fo the treee
+// traverse horizontally across every level fo the treee
 // Create a queue (this can be an array) and a variable to store the values of nodes data
 // Place the root node in the queue
 // Loop as long as there is anything in the queue
@@ -87,15 +87,40 @@ class BinarySearchTree {
         }
         return data;
     }
+
     // Pre order Depth First Search
     preOrderDFS(){
-        let data = [];
-        function traverse(node){
+        const data = []; 
+        const traverse = node => {
             data.push(node.val);
             node.left && traverse(node.left);
             node.right && traverse(node.right);
         }
-        traverse(this.root)
+        traverse(this.root);
+        return data;
+    }
+    
+    // Post order Depth First Search
+    postOrderDFS(){
+        const data = []; 
+        const traverse = node => {
+            node.left && traverse(node.left);
+            node.right && traverse(node.right);
+            data.push(node.val);
+        }
+        traverse(this.root);
+        return data;
+    }
+
+    // In order Depth first search
+    inOrderDFS(){
+        const data = []; 
+        const traverse = node => {
+            node.left && traverse(node.left);
+            data.push(node.val);
+            node.right && traverse(node.right);
+        }
+        traverse(this.root);
         return data;
     }
 }
@@ -113,4 +138,14 @@ bst.insert(15)
 // BFS expected: [10, 5, 20, 3, 7, 15, 25]
 // console.log(bst.breadthFirstSearch());
 // preOrderDFS expected: [10, 5, 3, 7, 20, 15, 25]
-console.log(bst.preOrderDFS());
+// console.log(bst.preOrderDFS());
+// postOrderDFS expexted: [3, 7, 5, 15, 25, 20, 10]
+// console.log(bst.postOrderDFS());
+// inOrderDFS expexted: [3, 5, 7, 10, 15, 20, 25]
+console.log(bst.inOrderDFS());
+
+// which is better
+// time complexity is the same
+// for a really wide tree it would be bad to use BFS because have to store the whole breadth in memory first
+// since most trees are wide, should use DFS
+// In Order DFS returns all the values in order!
